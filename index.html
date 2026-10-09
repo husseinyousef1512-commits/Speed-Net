@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Leer gratis computernetwerken met lessen en een quiz. Learn computer networking with free lessons and a quiz.">
+  <meta name="theme-color" content="#081523">
+  <title>NetStart Academy | Networking voor beginners</title>
+  <style>
+    :root {color-scheme:dark;--bg:#081523;--bg2:#0d2031;--panel:#11283a;--line:#29465b;--white:#f0faff;--muted:#bad0da;--mint:#41e2bf;--blue:#7bc5ff;}
+    * {box-sizing:border-box}
+    html {scroll-behavior:smooth}
+    body {margin:0;background:var(--bg);color:var(--white);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.75}
+    a {color:inherit;text-decoration:none}
+    button {font:inherit;cursor:pointer}
+    :focus-visible {outline:3px solid #a9fce9;outline-offset:3px}
+    .container {width:min(1100px,calc(100% - 36px));margin:auto}
+    header {background:#091827ed;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+    .nav {display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:72px}
+    .brand {display:flex;align-items:center;gap:9px;font-size:1.2rem;font-weight:750;white-space:nowrap}
+    .brand-mark {display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--mint);color:#052b2c;font-size:23px}
+    .brand-accent {color:var(--mint)}
+    .nav-right,.nav-links {display:flex;align-items:center;gap:18px}
+    .nav-links {color:var(--muted);font-size:.93rem}
+    .nav-links a:hover {color:var(--mint)}
+    .langs {display:flex;align-items:center;gap:3px;padding:3px;border:1px solid #3e6579;border-radius:11px;background:#102b3d}
+    .lang-btn {border:0;border-radius:8px;padding:5px 10px;color:var(--muted);background:transparent;font-size:.84rem;font-weight:750}
+    .lang-btn.active {background:var(--mint);color:#062e30}
+    .hero {padding:85px 0 75px;background:radial-gradient(circle at 18% 6%,#15435b 0,transparent 42%),linear-gradient(145deg,#081523,#0c2633)}
+    .hero-grid {display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+    .eyebrow {color:var(--mint);font-size:.82rem;font-weight:750;letter-spacing:1.1px}
+    h1 {font-size:clamp(2.1rem,5vw,3.65rem);line-height:1.22;margin:13px 0 21px}
+    h1 span {color:var(--mint)}
+    .subtitle {color:var(--muted);font-size:1.06rem;max-width:590px}
+    .btn {display:inline-block;border:0;background:var(--mint);color:#082b30;padding:11px 21px;border-radius:11px;font-weight:750}
+    .btn:hover {background:#99f7e2}
+    .btn-ghost {background:transparent;border:1px solid #63859c;color:var(--white)}
+    .btn-ghost:hover {background:#1a3b50}
+    .hero-actions {display:flex;flex-wrap:wrap;gap:11px;margin-top:25px}
+    .net-art {border:1px solid #336078;border-radius:21px;padding:29px 17px;background:linear-gradient(145deg,#183a50,#0b2436);box-shadow:0 25px 70px #010a1240}
+    .art-title {text-align:center;color:#c3dfed;font-size:.9rem;margin-bottom:18px}
+    .diagram {display:flex;justify-content:space-around;align-items:center;direction:ltr;gap:8px}
+    .node {display:grid;place-items:center;border-radius:15px;border:1px solid #3d7188;background:#102d41;width:78px;min-width:0;height:84px;text-align:center;font-size:1.85rem}
+    .node small {font-size:.66rem;color:#c5e5f1;line-height:1}
+    .node.router {border-color:var(--mint);box-shadow:0 0 23px #41e2bf29}
+    .line {flex:1;max-width:70px;height:2px;background:linear-gradient(90deg,var(--blue),var(--mint))}
+    .diagram-caption {color:#c1dbe7;text-align:center;font-size:.81rem;margin-top:22px}
+    section {padding:66px 0;scroll-margin-top:82px}
+    .section-top {display:flex;justify-content:space-between;align-items:end;gap:19px;flex-wrap:wrap;margin-bottom:26px}
+    h2 {font-size:clamp(1.6rem,3vw,2.15rem);line-height:1.35;margin:6px 0}
+    .section-desc {color:var(--muted);margin:0}
+    .progress {color:var(--mint);background:#123a3a;border:1px solid #2b6c61;padding:7px 13px;border-radius:999px;font-size:.9rem}
+    .cards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .card {border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:24px}
+    .lesson-id {display:inline-block;color:var(--mint);font-weight:750;font-size:.79rem;margin-bottom:8px}
+    .card h3 {margin:0 0 8px;font-size:1.21rem}
+    .card p {color:var(--muted);margin:0 0 12px}
+    details {margin-top:10px;border-top:1px solid var(--line);padding-top:12px}
+    summary {cursor:pointer;color:var(--blue);font-weight:750}
+    .detail-text {margin:12px 0;color:#d8ecf5}
+    .example {background:#0a2030;border-left:3px solid var(--mint);border-radius:8px;padding:10px 13px;color:#d0e9ed;margin:12px 0}
+    .complete {border:1px solid #467a75;background:transparent;color:#c2f9e8;border-radius:9px;padding:7px 12px;margin-top:8px}
+    .complete.done {background:#153e39;border-color:var(--mint)}
+    .quiz-section {background:#0b1d2b;border-top:1px solid #1d3949;border-bottom:1px solid #1d3949}
+    .quiz-card {border:1px solid var(--line);border-radius:18px;padding:24px;background:var(--panel)}
+    fieldset {border:0;border-bottom:1px solid var(--line);padding:0 0 18px;margin:0 0 18px;min-width:0}
+    fieldset:last-of-type {border:0}
+    legend {font-weight:750;margin-bottom:8px}
+    .option {display:block;cursor:pointer;padding:8px 10px;border-radius:8px;color:#d7eaf1}
+    .option:hover {background:#18394c}
+    input[type="radio"] {accent-color:var(--mint);margin-right:8px}
+    .result {margin-top:13px;min-height:26px;font-weight:750;color:var(--mint)}
+    .about {text-align:center;max-width:740px}
+    .about p {color:var(--muted)}
+    footer {border-top:1px solid var(--line);text-align:center;color:var(--muted);padding:22px;font-size:.88rem}
+    @media(max-width:800px) {.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.nav{flex-wrap:wrap;padding:10px 0}.nav-right{flex:1;justify-content:space-between}.hero{padding:52px 0}}
+    @media(max-width:460px) {.nav-links{font-size:.79rem;gap:12px}.brand{font-size:1.05rem}.brand-mark{width:32px;height:32px}.lang-btn{padding:5px 7px}.net-art{padding:20px 10px}.node{width:67px}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container" id="mainNav" aria-label="Hoofdnavigatie">
+      <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">⌘</span><span>NetStart <span class="brand-accent">Academy</span></span></a>
+      <div class="nav-right">
+        <div class="nav-links"><a href="#lessons" id="navLessons">Lessen</a><a href="#quiz" id="navQuiz">Quiz</a><a href="#about" id="navAbout">Over ons</a></div>
+        <div class="langs" role="group" aria-label="Language / Taal">
+          <button id="langNL" class="lang-btn active" type="button" aria-pressed="true" lang="nl">NL</button>
+          <button id="langEN" class="lang-btn" type="button" aria-pressed="false" lang="en">EN</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" id="heroEyebrow"></div>
+          <h1 id="heroTitle"></h1>
+          <p class="subtitle" id="heroDescription"></p>
+          <div class="hero-actions"><a class="btn" href="#lessons" id="startBtn"></a><a class="btn btn-ghost" href="#quiz" id="quizBtn"></a></div>
+        </div>
+        <div class="net-art" role="img" id="networkArt" aria-label="">
+          <div class="art-title" id="artTitle"></div>
+          <div class="diagram"><div class="node">💻<small>Laptop</small></div><div class="line"></div><div class="node router">📡<small>Router</small></div><div class="line"></div><div class="node">🌐<small>Internet</small></div></div>
+          <div class="diagram-caption" id="artCaption"></div>
+        </div>
+      </div>
+    </div>
+    <section id="lessons"><div class="container">
+      <div class="section-top"><div><div class="eyebrow" id="lessonsEyebrow"></div><h2 id="lessonsTitle"></h2><p class="section-desc" id="lessonsDescription"></p></div><div class="progress" id="progress" aria-live="polite"></div></div>
+      <div class="cards" id="lessonCards"></div>
+    </div></section>
+    <section class="quiz-section" id="quiz"><div class="container">
+      <div class="eyebrow" id="quizEyebrow"></div><h2 id="quizTitle"></h2><p class="section-desc" id="quizDescription" style="margin-bottom:22px"></p>
+      <form class="quiz-card" id="quizForm"><div id="quizQuestions"></div><button type="submit" class="btn" id="scoreBtn"></button><div class="result" id="result" role="status" aria-live="polite"></div></form>
+    </div></section>
+    <section id="about"><div class="container about"><div class="eyebrow" id="aboutEyebrow"></div><h2 id="aboutTitle"></h2><p id="aboutDescription"></p><a href="#home" class="btn btn-ghost" id="backTop"></a></div></section>
+  </main>
+  <footer>© <span id="year"></span> NetStart Academy · <span id="footerText"></span></footer>
+  <script>
+    'use strict';
+    // Edit de Nederlandse en Engelse teksten hieronder om je website aan te passen.
+    const translations = {
+      nl: {
+        pageTitle: 'NetStart Academy | Netwerken leren voor beginners', description: 'Gratis netwerken leren: IP-adressen, routers, switches en DNS. Met lessen en een quiz.',
+        navLabel: 'Hoofdnavigatie', navLessons: 'Lessen', navQuiz: 'Quiz', navAbout: 'Over ons',
+        heroEyebrow: 'NETWERKEN VOOR BEGINNERS', heroTitle: 'Ontdek de wereld van <span>computernetwerken</span>',
+        heroDescription: 'Leer stap voor stap hoe apparaten met elkaar communiceren en hoe het internet werkt. Ontdek IP-adressen, routers, switches en DNS — duidelijk uitgelegd, helemaal gratis.',
+        startBtn: 'Begin met les 1 →', quizBtn: 'Doe de quiz',
+        artLabel: 'Schematische voorstelling: laptop verbonden met een router en het internet', artTitle: 'Hoe komt jouw apparaat op het internet?', artCaption: 'Jouw apparaat → router → internet',
+        lessonsEyebrow: 'LEER DE BASIS', lessonsTitle: 'De eerste vier lessen', lessonsDescription: 'Open een les, lees de uitleg en markeer de les als afgerond.',
+        progress: count => `${count} van 4 lessen afgerond`, lessonLabel: 'LES', minutes: 'MINUTEN', readLesson: 'Lees de les', example: 'Voorbeeld:',
+        markDone: '✓ Markeer als afgerond', undoDone: '✓ Afgerond — klik om ongedaan te maken',
+        lessons: [
+          {minutes:3, title:'Wat is een computernetwerk?', teaser:'Hoe kunnen apparaten gegevens met elkaar delen?', body:'Een computernetwerk bestaat uit twee of meer apparaten die met elkaar verbonden zijn. Via zo’n verbinding wisselen ze gegevens uit en kunnen ze bijvoorbeeld dezelfde printer of internetverbinding gebruiken. Dat kan met een kabel of draadloos via wifi.', example:'Je telefoon en laptop zijn verbonden met dezelfde wifi-router. Daardoor maken ze deel uit van je thuisnetwerk.'},
+          {minutes:4, title:'Wat is een IP-adres?', teaser:'Een adres dat helpt om gegevens op de juiste plek te bezorgen.', body:'IP betekent <em>Internet Protocol</em>. Een IP-adres identificeert een netwerkinterface binnen een IP-netwerk en helpt bij het afleveren van gegevens. Thuis gebruikt je laptop vaak een privé-IP-adres, bijvoorbeeld <code>192.168.1.10</code>. Voor communicatie via het internet speelt meestal ook een publiek IP-adres van je netwerk een rol.', example:'Vergelijk een IP-adres met een afleveradres: het vertelt het netwerk waar gegevens naartoe moeten. Een netwerk werkt natuurlijk anders dan de post.'},
+          {minutes:4, title:'Router en switch: wat is het verschil?', teaser:'Twee apparaten met verschillende taken.', body:'Een <strong>router</strong> stuurt gegevens tussen verschillende netwerken, bijvoorbeeld tussen je thuisnetwerk en het internet. Een <strong>switch</strong> verbindt apparaten binnen één lokaal netwerk (LAN) en stuurt netwerkframes door naar de juiste poorten, meestal op basis van MAC-adressen.', example:'In een kantoor verbindt een switch de computers met elkaar. Een router verbindt het kantoornetwerk met andere netwerken.'},
+          {minutes:4, title:'Wat is DNS?', teaser:'Hoe vindt je computer het IP-adres van een website?', body:'DNS staat voor <em>Domain Name System</em>. Als je bijvoorbeeld <code>example.com</code> invoert, kan je apparaat via DNS het bijbehorende IP-adres opzoeken. Vervolgens kan de browser verbinding maken met de server. Je hoeft zo geen moeilijk te onthouden IP-adressen in te typen.', example:'Je typt de naam van een website in de adresbalk. DNS helpt om het bijbehorende serveradres te vinden.'}
+        ],
+        quizEyebrow: 'TEST JE KENNIS', quizTitle: 'Doe de netwerkquiz 🧠', quizDescription: 'Beantwoord alle vier de vragen en bekijk daarna je score.', scoreBtn: 'Bekijk mijn score',
+        questions: [
+          {question:'Wat is een computernetwerk?', options:['Eén computer zonder verbinding','Verbonden apparaten die gegevens uitwisselen','Een programma om foto’s te bewerken']},
+          {question:'Waarvoor wordt een IP-adres gebruikt?', options:['Om gegevens naar de juiste bestemming te sturen','Om het scherm helderder te maken','Om de batterij op te laden']},
+          {question:'Wat doet een router meestal?', options:['Geluid afspelen','Documenten typen','Gegevens tussen netwerken doorsturen']},
+          {question:'Waar helpt DNS bij?', options:['De computer koelen','Het IP-adres bij een domeinnaam vinden','De camera scherper maken']}
+        ],
+        missing: 'Beantwoord eerst alle vier de vragen 😊', score: points => `Je score: ${points} van 4 — ${points === 4 ? 'Geweldig gedaan! 🎉' : 'Goed geprobeerd! Bekijk de lessen en probeer het opnieuw 💪'}`,
+        aboutEyebrow:'OVER HET PROJECT', aboutTitle:'Waarom NetStart Academy?', aboutDescription:'Een goede kennis van netwerken is een waardevolle basis voor IT en cybersecurity. Met NetStart Academy kun je de basis gratis leren, in begrijpelijk Nederlands of Engels. Er komen later meer lessen bij.', backTop:'Terug naar boven ↑', footerText:'Gratis introductie tot netwerken'
+      },
+      en: {
+        pageTitle: 'NetStart Academy | Networking for Beginners', description: 'Learn networking for free: IP addresses, routers, switches, and DNS. Lessons and a quiz.',
+        navLabel: 'Main navigation', navLessons: 'Lessons', navQuiz: 'Quiz', navAbout: 'About',
+        heroEyebrow: 'NETWORKING FOR BEGINNERS', heroTitle: 'Discover the world of <span>computer networks</span>',
+        heroDescription: 'Learn step by step how devices communicate and how the internet works. Explore IP addresses, routers, switches, and DNS — explained clearly and completely free.',
+        startBtn: 'Start lesson 1 →', quizBtn: 'Take the quiz',
+        artLabel: 'Diagram showing a laptop connected to a router and the internet', artTitle: 'How does your device connect to the internet?', artCaption: 'Your device → router → internet',
+        lessonsEyebrow: 'LEARN THE BASICS', lessonsTitle: 'Your first four lessons', lessonsDescription: 'Open a lesson, read the explanation, and mark it as completed.',
+        progress: count => `${count} of 4 lessons completed`, lessonLabel: 'LESSON', minutes: 'MINUTES', readLesson: 'Read the lesson', example: 'Example:',
+        markDone: '✓ Mark as completed', undoDone: '✓ Completed — click to undo',
+        lessons: [
+          {minutes:3, title:'What is a computer network?', teaser:'How do devices share data with each other?', body:'A computer network is made up of two or more connected devices. Through the connection, these devices exchange data and can share resources such as printers or an internet connection. Connections can be wired or wireless, using Wi-Fi.', example:'Your phone and laptop are connected to the same Wi-Fi router. Both are part of your home network.'},
+          {minutes:4, title:'What is an IP address?', teaser:'An address that helps data reach the right destination.', body:'IP stands for <em>Internet Protocol</em>. An IP address identifies a network interface on an IP network and helps deliver data to the right place. At home, your laptop often has a private IP address, such as <code>192.168.1.10</code>. Internet communication generally also involves a public IP address associated with your network.', example:'An IP address is a bit like a delivery address: it helps the network know where to send data. Networks work differently from postal services, of course.'},
+          {minutes:4, title:'Router vs. switch: what is the difference?', teaser:'Two devices with different jobs.', body:'A <strong>router</strong> forwards data between different networks, for example between your home network and the internet. A <strong>switch</strong> connects devices within a local area network (LAN) and forwards network frames to the appropriate ports, usually based on MAC addresses.', example:'In an office, a switch connects the computers together. A router connects the office network to other networks.'},
+          {minutes:4, title:'What is DNS?', teaser:'How does your computer find a website’s IP address?', body:'DNS stands for <em>Domain Name System</em>. When you enter a name such as <code>example.com</code>, your device can use DNS to look up its associated IP address. Your browser can then connect to the server. You do not need to remember complicated IP addresses.', example:'You type a website name into the address bar. DNS helps find the corresponding server address.'}
+        ],
+        quizEyebrow: 'TEST YOUR KNOWLEDGE', quizTitle: 'Take the networking quiz 🧠', quizDescription: 'Answer all four questions to see your score.', scoreBtn: 'See my score',
+        questions: [
+          {question:'What is a computer network?', options:['One computer with no connection','Connected devices that exchange data','A photo-editing program']},
+          {question:'What is an IP address used for?', options:['Helping data reach the correct destination','Making the screen brighter','Charging the battery']},
+          {question:'What does a router usually do?', options:['Play sound','Write documents','Forward data between networks']},
+          {question:'What does DNS help with?', options:['Cooling the computer','Finding an IP address for a domain name','Making a camera sharper']}
+        ],
+        missing: 'Please answer all four questions first 😊', score: points => `Your score: ${points} out of 4 — ${points === 4 ? 'Amazing work! 🎉' : 'Good try! Review the lessons and try again 💪'}`,
+        aboutEyebrow:'ABOUT THE PROJECT', aboutTitle:'Why NetStart Academy?', aboutDescription:'Understanding networks is a valuable foundation for IT and cybersecurity. NetStart Academy lets you learn the basics for free in clear Dutch or English. More lessons will be added later.', backTop:'Back to top ↑', footerText:'Free introduction to networking'
+      }
+    };
+
+    const el = id => document.getElementById(id);
+    const answerKey = ['b','a','c','b'];
+    const done = new Set();
+    try {
+      const saved = JSON.parse(localStorage.getItem('netstart-completed') || localStorage.getItem('netstart-nl-done') || '[]');
+      if (Array.isArray(saved)) saved.forEach(id => {if (['1','2','3','4'].includes(String(id))) done.add(String(id));});
+    } catch (_) { /* Site also works if storage is unavailable. */ }
+    let lang = 'nl';
+    try {if (localStorage.getItem('netstart-language') === 'en') lang = 'en';} catch (_) {}
+    const fields = ['navLessons','navQuiz','navAbout','heroEyebrow','heroDescription','startBtn','quizBtn','artTitle','artCaption','lessonsEyebrow','lessonsTitle','lessonsDescription','quizEyebrow','quizTitle','quizDescription','scoreBtn','aboutEyebrow','aboutTitle','aboutDescription','backTop','footerText'];
+
+    function updateProgress() {
+      const t = translations[lang];
+      document.querySelectorAll('[data-lesson]').forEach(button => {
+        const isDone = done.has(button.dataset.lesson);
+        button.textContent = isDone ? t.undoDone : t.markDone;
+        button.classList.toggle('done', isDone);
+        button.setAttribute('aria-pressed', String(isDone));
+      });
+      el('progress').textContent = t.progress(done.size);
+    }
+
+    function renderLanguage(nextLang) {
+      const openLessons = [...document.querySelectorAll('#lessonCards details')].map(d => d.open);
+      const checkedAnswers = answerKey.map((_, i) => document.querySelector(`input[name="q${i+1}"]:checked`)?.value || '');
+      const hadScore = !!el('result').textContent.trim();
+      lang = nextLang;
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+      document.title = t.pageTitle;
+      document.querySelector('meta[name="description"]').content = t.description;
+      el('mainNav').setAttribute('aria-label',t.navLabel);
+      fields.forEach(id => {el(id).textContent = t[id];});
+      el('heroTitle').innerHTML = t.heroTitle;
+      el('networkArt').setAttribute('aria-label',t.artLabel);
+      ['nl','en'].forEach(code => {
+        const active = code === lang;
+        el('lang' + code.toUpperCase()).classList.toggle('active',active);
+        el('lang' + code.toUpperCase()).setAttribute('aria-pressed',String(active));
+      });
+      el('lessonCards').innerHTML = t.lessons.map((lesson,i) => `
+        <article class="card">
+          <span class="lesson-id">${t.lessonLabel} ${String(i+1).padStart(2,'0')} · ${lesson.minutes} ${t.minutes}</span>
+          <h3>${lesson.title}</h3><p>${lesson.teaser}</p>
+          <details ${openLessons[i] ? 'open' : ''}>
+            <summary>${t.readLesson}</summary>
+            <div class="detail-text">${lesson.body}</div>
+            <div class="example"><strong>${t.example}</strong> ${lesson.example}</div>
+          </details>
+          <button class="complete" type="button" data-lesson="${i+1}" aria-pressed="false"></button>
+        </article>`).join('');
+      document.querySelectorAll('[data-lesson]').forEach(button => button.addEventListener('click', () => {
+        const id = button.dataset.lesson;
+        if (done.has(id)) done.delete(id); else done.add(id);
+        try {localStorage.setItem('netstart-completed',JSON.stringify([...done]));} catch (_) {}
+        updateProgress();
+      }));
+      updateProgress();
+      el('quizQuestions').innerHTML = t.questions.map((question,i) => `
+        <fieldset><legend>${i+1}. ${question.question}</legend>
+          ${question.options.map((option,j) => `<label class="option"><input type="radio" name="q${i+1}" value="${'abc'[j]}" ${checkedAnswers[i] === 'abc'[j] ? 'checked' : ''}> ${option}</label>`).join('')}
+        </fieldset>`).join('');
+      if (hadScore) showScore();
+      try {localStorage.setItem('netstart-language',lang);} catch (_) {}
+    }
+
+    function showScore() {
+      const selected = answerKey.map((_,i) => document.querySelector(`input[name="q${i+1}"]:checked`)?.value);
+      const t = translations[lang];
+      if (selected.some(value => !value)) {el('result').textContent = t.missing;return;}
+      const score = selected.filter((value,i) => value === answerKey[i]).length;
+      el('result').textContent = t.score(score);
+    }
+    el('langNL').addEventListener('click',() => renderLanguage('nl'));
+    el('langEN').addEventListener('click',() => renderLanguage('en'));
+    el('quizForm').addEventListener('submit',event => {event.preventDefault();showScore();});
+    el('year').textContent = new Date().getFullYear();
+    renderLanguage(lang);
+  </script>
+</body>
+</html>
